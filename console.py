@@ -2,7 +2,6 @@
 """
 Contains the entry point of the command interpreter
 """
-
 import cmd
 import models
 from datetime import datetime
@@ -14,29 +13,22 @@ from models.review import Review
 from models.state import State
 from models.user import User
 import shlex
-
 classGroup = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
-
-
 class HBNBCommand(cmd.Cmd):
     """
     HBNB Class
     """
     prompt = '(hbnb) '
-
     def do_EOF(self, line):
         """End of File command: exit the program"""
         return True
-
     def emptyline(self):
         """ Overwriting the emptyline method """
         return False
-
     def do_quit(self, line):
         """Quit command exit the program"""
         return True
-
     def do_create(self, line):
         """Creates a new BaseModel instance, saves it to the JSON file and prints the id"""
         if len(line) == 0:
@@ -52,7 +44,6 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         ''' help_quit '''
         print("Quit command to exit the program\n")
-
     def help_EOF(self):
         """help_EOF"""
         print("End of File command: exit the program\n")
@@ -145,6 +136,5 @@ class HBNBCommand(cmd.Cmd):
                 if searchKey[:len_searchKey] == className_line[0]:
                     counter += 1
             print(counter)
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
